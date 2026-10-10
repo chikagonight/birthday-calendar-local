@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4c5bd4">
+  <title>Календарь дней рождений</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">▦</span><div><strong>Дни рождения</strong><span>календарь команды</span></div></div>
+      <div class="top-actions">
+        <input id="file-input" type="file" accept=".xlsx" hidden>
+        <button class="btn btn-quiet" id="select-db-btn">▣ Выбрать Excel</button>
+        <button class="btn btn-quiet" id="create-db-btn">＋ Создать базу</button>
+        <button class="btn btn-quiet" id="objects-btn" disabled>● Цвета объектов</button>
+        <button class="btn btn-quiet" id="save-copy-btn" disabled>⇩ Сохранить копию</button>
+        <button class="btn btn-primary" id="add-btn" disabled>＋ Добавить</button>
+      </div>
+    </header>
+    <div class="workspace">
+      <section class="content">
+        <div class="hero">
+          <div><p class="eyebrow">КОМАНДА</p><h1>Календарь дней рождений</h1><p>Все важные даты, подарки и заметки в одном месте.</p></div>
+          <div class="stats">
+            <div><span>Сотрудников</span><strong id="stat-total">0</strong></div>
+            <div><span>В ближайшие 30 дней</span><strong id="stat-upcoming">0</strong></div>
+            <div id="gift-stat"><span>Нужен подарок</span><strong id="stat-gifts">0</strong></div>
+          </div>
+        </div>
+        <div id="db-status" class="db-status"><span class="status-dot"></span><div><strong>Excel-база не выбрана</strong><small>Выберите существующий файл или создайте новый</small></div></div>
+        <div id="error" class="error-banner hidden"></div>
+        <div class="toolbar">
+          <div class="segmented"><button id="calendar-view" class="active">▦ Календарь</button><button id="list-view">☷ Список</button></div>
+          <label class="search">⌕ <input id="search" placeholder="Поиск по сотрудникам"></label>
+          <select id="city-filter"><option value="">Все города</option></select>
+          <select id="object-filter"><option value="">Все объекты</option></select>
+        </div>
+        <div id="main-view" class="loading-card">Загружаю календарь…</div>
+      </section>
+      <aside class="side-panel">
+        <div class="side-title"><div><span>♢</span><h2>Ближайшие</h2></div><span id="upcoming-count">0</span></div>
+        <p class="side-subtitle">Следующие 30 дней</p>
+        <div class="upcoming-list" id="upcoming-list"></div>
+        <div class="legend"><span><i class="dot red"></i> Сегодня</span><span><i class="dot orange"></i> До 4 дней</span><span><i class="dot violet"></i> До 14 дней</span></div>
+      </aside>
+    </div>
+    <div id="modal-root"></div>
+    <div id="toast" class="toast hidden"></div>
+  </main>
+  <script src="/vendor/jszip.min.js"></script>
+  <script src="/vendor/xlsx.full.min.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
