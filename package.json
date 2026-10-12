@@ -5,7 +5,8 @@
   "description": "Локальный календарь дней рождений с Excel-файлом в роли базы данных",
   "scripts": {
     "start": "node server.js",
-    "check": "node --check server.js && node --check public/app.js"
+    "check": "node --check server.js && node --check public/app.js && node --check public/db.js",
+    "test": "node --test test/*.test.js"
   },
   "engines": { "node": ">=20" }
 }
